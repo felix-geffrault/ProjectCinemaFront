@@ -1,0 +1,31 @@
+.loading-btn-wrapper{
+    position: relative;
+}
+
+.loading-btn{
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.loading-btn.active{
+    opacity: 1;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.mini-spinner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes opacityVisible {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

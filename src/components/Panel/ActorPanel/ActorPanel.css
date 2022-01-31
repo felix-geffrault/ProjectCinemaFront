@@ -1,0 +1,30 @@
+.actor-header{
+    display: flex;
+    justify-content: space-between
+}
+
+.actor-header-infos{
+    margin-right: 10px;
+}
+
+.header-field{
+    margin-top: 7px;
+}
+
+.actor-role{
+    margin-top: 5px;
+}
+
+.header-label{
+    color: #a4a4a4;
+}
+
+@media (max-width: 576px) {
+    .actor-header{
+        flex-direction: column-reverse;
+    }
+    .actor-photo{
+        object-fit: scale-down;
+        margin-bottom: 20px;
+    }
+}

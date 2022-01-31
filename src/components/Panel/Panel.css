@@ -1,0 +1,143 @@
+.main-panel{
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    background: rgba(19, 19, 19, 0.95);
+    color: white;
+    height: 100vh;
+    width: max(40vw, 550px);
+    z-index: 10;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in-out;
+    opacity: 0;
+    animation: 0.5s appear ease-in-out forwards 1s;
+}
+
+.main-panel.active{
+    transform: translateX(0);
+}
+
+@keyframes appear {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.btn-home{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    transition: opacity 0.5s;
+}
+
+.btn-home.hidden{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.btn-home:hover path{
+    fill: rgba(255, 255, 255, 0.55);
+}
+
+.btn-panel-toggle{
+    position: absolute;
+    top: 50%;
+    left: -26px;
+    width: 27px;
+    height: 50px;
+    z-index: 10;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.btn-panel-toggle-arrow{
+    transform-origin: center center;
+    transition: transform 0.5s;
+}
+
+.btn-panel-toggle-arrow.active{
+    transform: rotate(180deg);
+}
+
+.btn-panel-toggle:hover path{
+    stroke: white;
+}
+
+.btn-panel-toggle:hover .btn-panel-toggle-arrow{
+    fill: white;
+}
+
+.sub-panel{
+    position: relative;
+    overflow-y: auto;
+    padding: 50px;
+    flex-grow: 1;
+}
+
+.badge-list{
+    margin-top: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.badge{
+    padding: 3px 1em;
+    border-radius: 10px;
+    background-color: rgb(59, 59, 59);
+    text-decoration: none;
+    margin-right: 4px;
+    transition: all 0.3s;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.badge:hover{
+    transform: translate3d(0, -3px, 0);
+}
+
+.label{
+    font-size: 1.25em;
+    margin-bottom: 5px;
+}
+
+.inline-label{
+    font-size: 1.25em;
+    margin-right: 10px;
+}
+
+.field{
+    margin-top: 15px;
+}
+
+.description-text{
+    color: #a4a4a4;
+}
+
+
+@media (max-width: 993px) {
+
+    .main-panel{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 90vh;
+        width: 100vw;
+        z-index: 10;
+        transform: translateY(100%);
+    }
+
+    .main-panel.active{
+        transform: translateY(0);
+    }
+
+    .btn-panel-toggle{
+        top: -36px;
+        left: 50vw;
+        transform: translateX(-50%) rotate(90deg);
+    }
+
+}

@@ -1,0 +1,48 @@
+
+.admin-navs{
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9;
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.admin-nav-element{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.admin-nav-element .nav-label{
+    font-size: 1.2em;
+}
+
+.admin-nav-element:hover .nav-label{
+    opacity: 1;
+    transition: all ease-in-out 0.2s;
+    transform: translateX(0);
+}
+
+.edit-btn{
+    width: 45px;
+    height: 45px;
+    z-index: 2;
+    transform: translateX(20px);
+    transition: transform ease-in-out 0.2s;
+}
+
+.admin-navs path{
+    transition: all 0.2s ease-in-out;
+}
+
+.admin-nav-element:hover path, .admin-nav-element:hover rect{
+    fill: white;
+}
+
+.admin-nav-element:hover .edit-btn{
+    transform: translateX(0);
+}
+
+

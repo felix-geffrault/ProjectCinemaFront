@@ -1,0 +1,42 @@
+.spinner svg, .loading-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/*.loading-text:after{
+    content: '';
+    animation: ppt 2s linear infinite;
+}
+
+@keyframes ppt {
+    0%{
+        content: '';
+    }
+    25%{
+        content: '.';
+    }
+    50%{
+        content: '..';
+    }
+    75%{
+        content: '...';
+    }
+}*/
+
+
+.spinner svg {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: stroke 2s linear infinite;
+}
+
+@keyframes stroke {
+    to {
+        stroke-dashoffset: 500;
+    }
+}
+

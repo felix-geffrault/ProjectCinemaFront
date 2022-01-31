@@ -1,0 +1,64 @@
+.model{
+    display: flex;
+    flex-direction: column;
+}
+
+.model:not(:first-child){
+    margin-top: 30px;
+}
+
+.model-header{
+    display: flex;
+    align-items: center;
+}
+
+.model-title{
+    font-weight: 500;
+    margin-left: 30px;
+}
+
+.btn-model-add:hover{
+    background-color: rgba(255,255,255,0.1);
+}
+
+.btn-model-add{
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    cursor: pointer;
+    margin-left: auto;
+    text-decoration: none;
+}
+
+.btn-model-list:hover .btn-model-list-path{
+    fill: white;
+}
+
+.model-list{
+    margin-top: 10px;
+    border-top: 1px solid white;
+    padding-top: 10px;
+}
+
+.entity{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 -5px;
+    padding: 2px 5px;
+}
+
+.entity:hover{
+    background-color: rgba(63, 63, 63, 0.8)!important;
+}
+
+.entity:nth-child(2n+1){
+    background-color: rgba(63, 63, 63, 0.2);
+}
+
+.entity-btns{
+    display: flex;
+    align-items: center;
+}

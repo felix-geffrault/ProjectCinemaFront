@@ -1,0 +1,11 @@
+.list-panel{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 40px;
+}
+
+.list-panel-title{
+    text-align: center;
+    margin-bottom: 70px;
+}

@@ -1,0 +1,113 @@
+nav{
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    z-index: 100;
+}
+
+.nav-navs{
+    overflow: hidden;
+}
+
+.nav-btn{
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: rgba(19, 19, 19, 0.95);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.nav-list{
+    z-index: 10;
+}
+
+.nav-list line{
+    transition: all ease-in-out 0.2s;
+}
+
+nav:hover .nav-list line{
+    stroke: white;
+}
+
+nav:hover .transitioning-line {
+    transform: scale(2, 1);
+}
+
+.nav-element{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-element path{
+    transition: fill 0.2s ease-in-out;
+}
+
+.nav-element:hover path{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    fill: white;
+}
+
+.nav-item{
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all ease-in-out 0.2s;
+}
+
+nav:hover .nav-item{
+    opacity: 1;
+    transform: translateY(0);
+    display: flex;
+    transition: all ease-in-out 0.2s ;
+}
+
+.nav-element:nth-child(1) .nav-item{ transition-delay: 0.5s; }
+.nav-element:nth-child(2) .nav-item{ transition-delay: 0.35s; }
+.nav-element:nth-child(3) .nav-item{ transition-delay: 0.2s; }
+
+nav:hover .nav-element:nth-child(1) .nav-item{ transition-delay: 0s; }
+nav:hover .nav-element:nth-child(2) .nav-item{ transition-delay: 0.20s;}
+nav:hover .nav-element:nth-child(3) .nav-item{ transition-delay: 0.40s; }
+
+.nav-label{
+    display: flex;
+    color: white;
+    background-color: black;
+    padding-left: 20px;
+    padding-right: 10px;
+    height: 30px;
+    margin-left: -10px;
+    align-items: center;
+    z-index: 1;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all ease-in-out 0.15s;
+}
+
+nav:hover .nav-label{
+    opacity: 1;
+    transition: all ease-in-out 0.2s;
+    transform: translateX(0);
+}
+
+.nav-element:nth-child(1) .nav-label{ transition-delay: 0.3s; }
+.nav-element:nth-child(2) .nav-label{ transition-delay: 0.15s; }
+.nav-element:nth-child(3) .nav-label{ transition-delay: 0s; }
+
+nav:hover .nav-element:nth-child(1) .nav-label{ transition-delay: 0.15s; }
+nav:hover .nav-element:nth-child(2) .nav-label{ transition-delay: 0.35s; }
+nav:hover .nav-element:nth-child(3) .nav-label{ transition-delay: 0.55s; }
+
+@media (max-width: 993px) {
+    nav{
+        top: 20px;
+        left: 20px;
+    }
+}

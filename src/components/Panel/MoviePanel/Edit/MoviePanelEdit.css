@@ -1,0 +1,93 @@
+.edit-header-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: end;
+    column-gap: 30px;
+}
+
+.edit-element{
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-element{
+    margin-top: 5px;
+}
+
+.edit-column{
+    align-items: stretch;
+}
+
+.element-label{
+    color: #adadad;
+}
+
+.element-input, .element-select{
+    background-color: transparent;
+    color: white;
+    outline: none!important;
+    border: none;
+    border-bottom: 2px solid grey;
+    padding-bottom: 2px;
+}
+
+.element-textarea{
+    height: 75px;
+    font-family: inherit;
+    border: 2px solid grey;
+    padding: 0 3px;
+}
+
+input::-webkit-calendar-picker-indicator{
+    filter: invert(100%);
+}
+
+.element-input:focus, .element-select:focus {
+    border-color: white;
+}
+
+.edit-body, .edit-personages{
+    margin-top: 30px;
+}
+
+.personage-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.personage-header{
+    margin-top: 10px;
+    color: #c4c4c4;
+}
+
+.personage-edit-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.personage-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 30px;
+    column-gap: 30px;
+    align-content: end;
+}
+
+.delete-personage-btn{
+    align-self: end;
+}
+
+.save-container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 993px) {
+    .edit-header-wrapper{
+        grid-template-columns: 1fr;
+    }
+    .personage-grid{
+        grid-template-columns: 1fr;
+        column-gap: 0;
+    }
+}

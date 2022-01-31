@@ -1,0 +1,18 @@
+.youtube{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: rgba(0,0,0, 0.9);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.youtube.active{
+    opacity: 1;
+    pointer-events: initial;
+}
