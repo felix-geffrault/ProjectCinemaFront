@@ -1,0 +1,99 @@
+ const bind = useDrag(({ down, offset: [x, y] }) => {
+        api.start({x, y})
+        const offSetLength = x + y;
+        /// shift y ?
+        if(xVectors.w * (shift.x + 1) < offSetLength){
+            console.log("shift to the right", xVectors.w * (shift.x + 1), offSetLength)
+            console.log("shift ", shift)
+            const nbMovies = movies.length;
+            const newGrid = [...gridItems]
+            const nbColumns = Math.floor(nbMovies/nbRows);
+            const rowsPlusOneNeeded = nbMovies % nbRows;
+            const indexShifted = shift.x * nbRows;
+            console.log("first index", nbMovies - 1 - indexShifted, "last", nbMovies - 1 - indexShifted - nbRows)
+            for(let i = nbMovies - 1 - indexShifted; i >  nbMovies - 1 - indexShifted - nbRows; i--){
+                let plusOne;
+                let j = ((i % nbMovies) + nbMovies) % nbMovies;
+                if(j % nbRows < rowsPlusOneNeeded){
+                     j = i + Math.floor(shift.x/(nbColumns+1))
+                     plusOne = 1;
+                }
+                else {
+                    j = i < 0 ? i + nbMovies - rowsPlusOneNeeded : i;
+                    plusOne = 0;
+                }
+                console.log('i', i, 'j', j)
+                const newMovie = {...newGrid[j]};
+/*
+                console.log(newMovie)
+*/
+                newMovie.x -= (nbColumns + plusOne) * ( xVectors.w);
+                newMovie.y -= (nbColumns + plusOne)  * ( yVectors.w );
+                newGrid[j] = newMovie;
+            }
+            setGridItems(newGrid)
+            setShift({x: shift.x+1, y: shift.y})
+        }else if (offSetLength < xVectors.w * (shift.x - 1)){
+            console.log("shift to the left", offSetLength,  xVectors.w * (shift.x - 1))
+            console.log("shift", shift)
+            const nbMovies = movies.length;
+            const newGrid = [...gridItems];
+            const rowsPlusOneNeeded = nbMovies % nbRows;
+            const nbColumns = Math.floor(movies.length/nbRows);
+            const indexShifted = ((-shift.x * nbRows) % nbMovies + nbMovies) % nbMovies;
+            console.log("first index", indexShifted, "last", indexShifted + nbRows -1)
+            for(let i = indexShifted; i < indexShifted + nbRows; i++){
+                const plusOne = i % nbRows < rowsPlusOneNeeded ? 1 : 0;
+                const newMovie = {...newGrid[i]};
+                newMovie.x += (nbColumns + plusOne) * ( xVectors.w);
+                newMovie.y += (nbColumns + plusOne)  * ( yVectors.w );
+                newGrid[i] = newMovie;
+            }
+            setGridItems(newGrid)
+            setShift({x: shift.x-1, y: shift.y})
+        }
+    },);
+
+
+
+////
+       /* const dashBoardEl = document.querySelector('.movie-dashboard')!;*/
+        /*const array = window.getComputedStyle(dashBoardEl).transform.match(/(-?[0-9\.]+)/g);*/
+/*
+        const [xBoard, yBoard] : number[] = array ? array!.slice(-2, 0).map(e => parseInt(e)) : [0, 0];
+*/
+
+        const nbSelected = selectedMovies.length;
+        const nbLines = Math.ceil(nbSelected/3);
+        const {x: xBoard, y: yBoard} = handleGetBoardPos();
+        const [x, y] = [movie.x + xBoard, yBoard + movie.y];
+        const windowWidth = window.innerWidth;
+        const coefWidth = windowWidth > 993 ? (windowWidth * 0.4 > 550 ? 0.6 : (windowWidth-550)/windowWidth) : 1
+
+        const [xTarget, yTarget] = [window.innerWidth*coefWidth/2-wI/2, window.innerHeight/2-hI/2];
+        const [xMove, yMove] = [xTarget-x, yTarget-y];
+        const [xMove2, yMove2] = [Math.cos(-angle) * xMove + Math.sin(-angle) * yMove, - Math.sin(-angle) * xMove + Math.cos(-angle) * yMove]
+        console.log("x", x,"y", y, "xMove", xMove, "yMove", yMove, "xTarget", xTarget, "yTarget", yTarget, "xMove2", xMove2, "yMove2", yMove2);
+        setImgStyle({transform: `translate3d(${xMove2}px, ${yMove2}px, 0) rotate(30deg) scale(2)`, zIndex: 2});
+
+
+        const nbSelected = selectedMovies.length;
+        const nbColumns = 3;
+        const nbLines = Math.ceil(nbSelected/nbColumns);
+        const lineHeight = window.innerHeight/nbLines;
+        const scale = Math.min(lineHeight/wI,2);
+        const selectedPos = selectedMovies.map(m => m.id).indexOf(movie.id) + 1;
+
+        const windowWidth = window.innerWidth;
+        const coefWidth = windowWidth > 993 ? (windowWidth * 0.4 > 550 ? 0.6 : (windowWidth-550)/windowWidth) : 1
+        const windowFinalWidth = window.innerWidth*coefWidth;
+
+        const [xTarget, yTarget] = [windowFinalWidth*(selectedPos%nbColumns)/nbColumns/2-wI/2, window.innerHeight*Math.floor(selectedPos/3)/nbLines/2-hI/2];
+
+        const {x: xBoard, y: yBoard} = handleGetBoardPos();
+        const [x, y] = [movie.x + xBoard, yBoard + movie.y];
+
+        const [xMove, yMove] = [xTarget-x, yTarget-y];
+        const [xMove2, yMove2] = [Math.cos(-angle) * xMove + Math.sin(-angle) * yMove, - Math.sin(-angle) * xMove + Math.cos(-angle) * yMove]
+        console.log("x", x,"y", y, "xMove", xMove, "yMove", yMove, "xTarget", xTarget, "yTarget", yTarget, "xMove2", xMove2, "yMove2", yMove2);
+        setImgStyle({transform: `translate3d(${xMove2}px, ${yMove2}px, 0) rotate(30deg) scale(${scale})`, zIndex: 2});
